@@ -37,7 +37,7 @@ setup(
     ],
     entry_points={
         'xblock.v1': [
-            'jupyterlite = jupyterlitexblock:JupterLiteXBlock',
+            'jupyterlite = jupyterlitexblock:JupyterLiteXBlock',
         ]
     },
     package_data=package_data("jupyterlitexblock", ["static", "public", "locale"]),

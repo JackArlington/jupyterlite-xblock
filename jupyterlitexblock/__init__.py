@@ -1,1 +1,1 @@
-from .jupyterlitexblock import JupterLiteXBlock
+from .jupyterlitexblock import JupyterLiteXBlock

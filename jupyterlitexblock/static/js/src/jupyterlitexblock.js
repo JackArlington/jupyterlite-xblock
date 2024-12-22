@@ -1,5 +1,5 @@
-/* Javascript for JupterLiteXBlock. */
-function JupterLiteXBlock(runtime, element, initArgs) {
+/* Javascript for JupyterLiteXBlock. */
+function JupyterLiteXBlock(runtime, element, initArgs) {
   var markCompleteUrl = runtime.handlerUrl(element, "mark_complete");
   var refreshJupyterliteXblock = runtime.handlerUrl(
     element,
@@ -48,7 +48,7 @@ function JupterLiteXBlock(runtime, element, initArgs) {
   $(element)
     .find(".save-button")
     .bind("click", function (event) {
-      console.log("Strted JupterLiteXBlock");
+      console.log("Strted JupyterLiteXBlock");
       event.preventDefault();
       var formData = new FormData();
       var jupyterliteUrl = $(element).find("input[name=jupyterlite_url]").val();

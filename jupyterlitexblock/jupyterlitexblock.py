@@ -24,7 +24,7 @@ log = logging.getLogger(__name__)
 
 
 @XBlock.wants("settings")
-class JupterLiteXBlock(CompletableXBlockMixin, XBlock):
+class JupyterLiteXBlock(CompletableXBlockMixin, XBlock):
     """
        EdX XBlock for embedding JupyterLite, allowing learners to interact with Jupyter notebooks.
        Instructors can configure JupyterLite settings in Studio, and learners access notebooks in the LMS 
@@ -122,8 +122,8 @@ class JupterLiteXBlock(CompletableXBlockMixin, XBlock):
         html = self.resource_string("static/html/jupyterlitexblock.html").format(jupyterlite_iframe=jupyterlite_iframe, self=self)
         frag = Fragment(html)
         frag.add_javascript(self.resource_string("static/js/src/jupyterlitexblock.js"))
-        frag.initialize_js('JupterLiteXBlock')
-        frag.initialize_js('JupterLiteXBlock', json_args={
+        frag.initialize_js('JupyterLiteXBlock')
+        frag.initialize_js('JupyterLiteXBlock', json_args={
         'completion_delay_seconds': self.xblock_settings.get("COMPLETION_DELAY_SECONDS", 5)
          })
         return frag
@@ -144,7 +144,7 @@ class JupterLiteXBlock(CompletableXBlockMixin, XBlock):
         template = self.render_template("static/html/upload.html", studio_context)
         frag = Fragment(template)
         frag.add_javascript(self.resource_string("static/js/src/jupyterlitexblock.js"))
-        frag.initialize_js('JupterLiteXBlock')
+        frag.initialize_js('JupyterLiteXBlock')
         return frag
     
     def delete_existing_files(self):
@@ -200,3 +200,19 @@ class JupterLiteXBlock(CompletableXBlockMixin, XBlock):
         self.viewed_by_learner = ""
         notebook_url = (self.jupyterlite_url + f'?fromURL={self.default_notebook}') if self.default_notebook else ""
         return Response(json.dumps({"result": "success", "notebook_url": notebook_url}), content_type='application/json; charset=UTF-8')
+
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("Jupyterlite",
+             """<jupyterlite/>
+             """),
+            ("Multiple Jupyterlite",
+             """<vertical_demo>
+                <jupyterlite/>
+                <jupyterlite/>
+                <jupyterlite/>
+                </vertical_demo>
+             """),
+        ]

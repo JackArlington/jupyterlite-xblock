@@ -62,7 +62,7 @@ If a notebook is already uploaded, it will display its name. You can replace it 
 #### **Add these settings to enable S3 Storage.**
 Please make sure your bucket's CORS allow JupyterLite service URL
 
-    XBLOCK_SETTINGS["JupterLiteXBlock"] = {
+    XBLOCK_SETTINGS["JupyterLiteXBlock"] = {
         "STORAGE_FUNC": "jupyterlitexblock.storage.s3",
         "S3_BUCKET_NAME": "YOUR_BUCKET_NAME_GOES_HERE"
     }
@@ -70,7 +70,7 @@ Please make sure your bucket's CORS allow JupyterLite service URL
 #### Completion Delay Setting: 
 Configure the delay for marking an activity as complete. The default is 5 seconds, but it can be adjusted to suit course needs. The setting 'completion_delay_seconds' in XBLOCK_SETTINGS allows you to specify the delay in seconds.
 
-    XBLOCK_SETTINGS["JupterLiteXBlock"] = {
+    XBLOCK_SETTINGS["JupyterLiteXBlock"] = {
         "COMPLETION_DELAY_SECONDS": 10
     }
 
